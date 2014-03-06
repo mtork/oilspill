@@ -1,0 +1,37 @@
+#chart-container {
+    width: 1000px; 
+    margin: 0 auto 50px auto;
+    background: rgba(255,255,255,0.5);
+    box-shadow: 1px 1px 4px rgba(0,0,0,0.2);
+    padding: 20px 30px;
+}
+ 
+#chart-container h2 {
+    color: #444;
+    margin: 0 0 10px;
+    font-weight: 300;
+    padding: 10px;
+    text-shadow: 0 1px 1px rgba(255,255,255,0.8);
+    font-size: 24px;
+}
+
+g.context g.axis path{ stroke-opacity: 0;}
+g.context g.axis line{ stroke-opacity: .1;}
+ 
+g.context g.brush rect.background{ fill: rgba(0,0,0,.1);}
+.brush .extent {
+    stroke: #fff;
+    fill-opacity: .125;
+    shape-rendering: crispEdges;
+}
+ 
+g.context rect.background{
+    fill: rgb(200,200,255);
+    visibility: visible !important;
+}
+
+.axis path, .axis line {
+    fill: none;
+    stroke: #aaa;
+    shape-rendering: crispEdges;
+}
