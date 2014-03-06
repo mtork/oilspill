@@ -13,55 +13,30 @@ $(document).ready(function(){
 
 
 
-    d3.csv('emotion_data.csv', createChart);
-      
     
 
 
     function createChart(data){
-        var emotions = ['accusation', 'anger', 'disgust', 'fear', 'happiness', 'no', 'sadness', 'surprise'],
-            charts = [],
-            maxDataPoint = 0;
 
-        var emotionsCount = emotions.length;
+    data = [1, 2, 5, 7, 10, 9];
 
-        startTime = data[0].time,
-        endTime = data[18].time,
-        chartHeight = height * (1 / emotionsCount);
+    charts = [];
 
-
-        data.forEach(function(d) {
-            
-
-            d["  "] = parseFloat(d["number of messages"])
-            if (d["number of messages"] > maxDataPoint) {
-                maxDataPoint = d["number of messages"];
-            }
-            //parse time if need HH:MM:SS
-        });
-        console.log(data);
-        console.log(maxDataPoint);
-
-
-      for(var i = 0; i < emotionsCount; i++) {
             charts.push( new Chart({
-                data: data.slice(),
-                id: i,
-                name: emotions[i],
-                width: width,
-                height: height * (1 / emotionsCount),
-                maxDataPoint: maxDataPoint,
-                svg: svg,
-                margin: margin,
-                showBottomAxis: (i == emotions.length - 1)
+                data: data,
+                id: 0,
+                name: "label",
+                width: 500,
+                height: 100,
+                maxDataPoint: 10,
+                showBottomAxis: true
             }));
 
-        }
-
+    
  
 
     }
-
+createChart(null);
 
 function Chart(options){
         this.chartData = options.data;
@@ -111,8 +86,6 @@ function Chart(options){
                     .attr('class',this.name.toLowerCase())
                     .attr("transform", "translate(" + this.margin.left + "," + (this.margin.top + (this.height * this.id) + (10 * this.id)) + ")");
 
-
-console.log(options.data);
         this.chartContainer.append("path")
                 .data([options.data])
                 .attr("class", "chart")
