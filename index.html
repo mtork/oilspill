@@ -53,7 +53,7 @@
 												.attr("width", width + margin.left + margin.right)
 												.attr("height", (height + margin.top + margin.bottom));
 												
-						d3.csv('data.csv', createChart);
+						d3.csv('data2.csv', createChart);
 						
 						function createChart(data){
 							var countries = [];
@@ -83,7 +83,11 @@
 							*/
 							data.forEach(function(d) {
 								for (var prop in d) {
-									if (d.hasOwnProperty(prop)) {
+									if (prop=="Time") {
+										continue;
+									}
+									else (d.hasOwnProperty(prop)) 
+									{
 										d[prop] = parseFloat(d[prop]);
 										
 										if (d[prop] > maxDataPoint) {
@@ -93,7 +97,9 @@
 								}
 								
 								// D3 needs a date object, let's convert it just one time
-								d.Year = new Date(d.Year,0,1);
+								d.Year = new Date("June 10, 2010 " + d["Time"]);
+								console.log(d.Year);
+
 							});
 				
 							for(var i = 0; i < countriesCount; i++){
@@ -114,14 +120,14 @@
 							/* Let's create the context brush that will 
 									let us zoom and pan the chart */
 							var contextXScale = d3.time.scale()
-																		.range([0, contextWidth])
-																		.domain(charts[0].xScale.domain());	
+								.range([0, contextWidth])
+								.domain(charts[0].xScale.domain());	
 							
 							var contextAxis = d3.svg.axis()
-																			.scale(contextXScale)
-																			.tickSize(contextHeight)
-																			.tickPadding(-10)
-																			.orient("bottom");
+								.scale(contextXScale)
+								.tickSize(contextHeight)
+								.tickPadding(-10)
+								.orient("bottom");
 							
 							var contextArea = d3.svg.area()
 																			.interpolate("monotone")
