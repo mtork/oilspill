@@ -39,8 +39,6 @@ $(document).ready(function(){
             }
             //parse time if need HH:MM:SS
         });
-        console.log(data);
-        console.log(maxDataPoint);
 
 
       for(var i = 0; i < emotionsCount; i++) {
@@ -64,100 +62,98 @@ $(document).ready(function(){
 
 
 function Chart(options){
-        this.chartData = options.data;
-        this.width = options.width;
-        this.height = options.height;
-        this.maxDataPoint = options.maxDataPoint;
-        this.svg = options.svg;
-        this.id = options.id;
-        this.name = options.name;
-        this.margin = options.margin;
-        this.showBottomAxis = options.showBottomAxis;
-                             
-        var localName = this.name;
+    this.chartData = options.data;
+    this.width = options.width;
+    this.height = options.height;
+    this.maxDataPoint = options.maxDataPoint;
+    this.svg = options.svg;
+    this.id = options.id;
+    this.name = options.name;
+    this.margin = options.margin;
+    this.showBottomAxis = options.showBottomAxis;
+                         
+    var localName = this.name;
 
 
-        
-        //XScale is time based
-        this.xScale = d3.time.scale()
-                    .range([0, this.width])
-                    .domain(d3.extent(this.chartData.map(function(d) { return d.time; })));
+    
+    //XScale is time based
+    this.xScale = d3.time.scale()
+                .range([0, this.width])
+                .domain(d3.extent(this.chartData.map(function(d) { return d.time; })));
                                  
-        //YScale is linear based on the maxData Point we found earlier
-        this.yScale = d3.scale.linear()
-                    .range([this.height,0])
-                    .domain([0,this.maxDataPoint]);
+    //YScale is linear based on the maxData Point we found earlier
+    this.yScale = d3.scale.linear()
+                .range([this.height,0])
+                .domain([0,this.maxDataPoint]);
 
 
-        var xS = this.xScale;
-        var yS = this.yScale;
-     
-        this.area = d3.svg.area()
-                .interpolate("basis")
-                .x(function(d) { return xS(d.time); })
-                .y0(this.height)
-                .y1(function(d) { return yS(d[localName]); });
+    var xS = this.xScale;
+    var yS = this.yScale;
+ 
+    this.area = d3.svg.area()
+            .interpolate("basis")
+            .x(function(d) { return xS(d.time); })
+            .y0(this.height)
+            .y1(function(d) { return yS(d[localName]); });
 
 
-        //technically don't need this?
-        this.svg.append("defs").append("clipPath")
-                    .attr("id", "clip-" + this.id)
-                   .append("rect")
-                    .attr("width", this.width)
-                    .attr("height", this.height);
+    //technically don't need this?
+    this.svg.append("defs").append("clipPath")
+                .attr("id", "clip-" + this.id)
+               .append("rect")
+                .attr("width", this.width)
+                .attr("height", this.height);
 
 
-        this.chartContainer = svg.append("g")
-                    .attr('class',this.name.toLowerCase())
-                    .attr("transform", "translate(" + this.margin.left + "," + (this.margin.top + (this.height * this.id) + (10 * this.id)) + ")");
+    this.chartContainer = svg.append("g")
+                .attr('class',this.name.toLowerCase())
+                .attr("transform", "translate(" + this.margin.left + "," + (this.margin.top + (this.height * this.id) + (10 * this.id)) + ")");
 
 
-console.log(options.data);
-        this.chartContainer.append("path")
-                .data([options.data])
-                .attr("class", "chart")
-                .attr("clip-path", "url(#clip-" + this.id + ")")
-                .attr("d", this.area);
+    this.chartContainer.append("path")
+            .data([options.data])
+            .attr("class", "chart")
+            .attr("clip-path", "url(#clip-" + this.id + ")")
+            .attr("d", this.area);
      
        
-        this.xAxisTop = d3.svg.axis().scale(this.xScale).orient("bottom");
-        this.xAxisBottom = d3.svg.axis().scale(this.xScale).orient("top");
+    this.xAxisTop = d3.svg.axis().scale(this.xScale).orient("bottom");
+    this.xAxisBottom = d3.svg.axis().scale(this.xScale).orient("top");
 
 
         //top axis on first emotion
-        if(this.id == 0){
+    if(this.id == 0){
+        this.chartContainer.append("g")
+                .attr("class", "x axis top")
+                .attr("transform", "translate(0,0)")
+                .call(this.xAxisTop);
+
+
+        //bottom axis on last emotion
+     
+        if(this.showBottomAxis){
             this.chartContainer.append("g")
-                    .attr("class", "x axis top")
-                    .attr("transform", "translate(0,0)")
-                    .call(this.xAxisTop);
-
-
-            //bottom axis on last emotion
-         
-            if(this.showBottomAxis){
-                this.chartContainer.append("g")
-                    .attr("class", "x axis bottom")
-                    .attr("transform", "translate(0," + this.height + ")")
-                    .call(this.xAxisBottom);
-            }
-
-            this.yAxis = d3.svg.axis().scale(this.yScale).orient("left").ticks(5);
-                                         
-            this.chartContainer.append("g")
-                    .attr("class", "y axis")
-                    .attr("transform", "translate(-15,0)")
-                    .call(this.yAxis);
-            this.chartContainer.append("text")
-                    .attr("class","country-title")
-                    .attr("transform", "translate(15,40)")
-                    .text(this.name);
+                .attr("class", "x axis bottom")
+                .attr("transform", "translate(0," + this.height + ")")
+                .call(this.xAxisBottom);
         }
 
+        this.yAxis = d3.svg.axis().scale(this.yScale).orient("left").ticks(5);
+                                     
+        this.chartContainer.append("g")
+                .attr("class", "y axis")
+                .attr("transform", "translate(-15,0)")
+                .call(this.yAxis);
+        this.chartContainer.append("text")
+                .attr("class","country-title")
+                .attr("transform", "translate(15,40)")
+                .text(this.name);
+    }       
 
-                             
-    }
 
-/*
+}
+
+
     var contextXScale = d3.time.scale()
                     .range([0, contextWidth])
                     .domain(charts[0].xScale.domain()); 
@@ -220,7 +216,13 @@ console.log(options.data);
         this.chartContainer.select(".x.axis.top").call(this.xAxisTop);
         this.chartContainer.select(".x.axis.bottom").call(this.xAxisBottom);
     }
-*/
-    
+
+
+                 
+    .axis path, .axis line {
+        fill: none;
+        stroke: #aaa;
+        shape-rendering: crispEdges;
+    }
 
 });
