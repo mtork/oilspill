@@ -10,9 +10,9 @@ g.usa path.chart{ fill: rgba(171,127,201,0.5);}
     shape-rendering: crispEdges;
 }
 
-.area {
-    fill: lightsteelblue;
-    stroke-width: 0;
+.emotion-title {
+    font-size: 16px;
+    color: white;
 }
 
 #chart-container {

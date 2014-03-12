@@ -53,12 +53,8 @@
 							var endYear = data[data.length - 1].Year;
 							var chartHeight = height * (1 / countriesCount);
 							
-							/* Let's make sure these are all numbers, 
-							we don't want javaScript thinking it's text 
-							
-							Let's also figure out the maximum data point
-							We'll use this later to set the Y-Axis scale
-							*/
+														
+							// finds max data point
 							data.forEach(function(d) {
 								for (var prop in d) {
 									if (prop=="Time") {
@@ -94,10 +90,9 @@
 								}));
 
 							}
-							console.log(charts);
 							
-							/* Let's create the context brush that will 
-									let us zoom and pan the chart */
+							
+							// context brush for zooming and panning
 							var contextXScale = d3.time.scale()
 								.range([0, contextWidth])
 								.domain(charts[0].xScale.domain());	
@@ -120,7 +115,7 @@
 				
 							var context = svg.append("g")
 								.attr("class","context")
-								.attr("transform", "translate(" + (margin.left + width * .25) + "," + (height + margin.top + chartHeight) + ")");
+								.attr("transform", "translate(" + (margin.left + width * .25) + "," + (height + margin.top + chartHeight  + 40) + ")");
 							
 							context.append("g")
 								.attr("class", "x axis top")
@@ -132,7 +127,7 @@
 								.call(brush)
 								.selectAll("rect")
 									.attr("y", 0)
-									.attr("height", contextHeight);
+									.attr("height", 30);
 							
 							context.append("text")
 								.attr("class","instructions")
@@ -196,7 +191,7 @@
 							
 							console.log("test");
 							
-							/* We've created everything, let's actually add it to the page */
+							// Creating the path and rendering it
 							this.chartContainer.append("path")
 								.data([this.chartData])
 								.attr("class", "chart")
@@ -205,7 +200,8 @@
 															
 							this.xAxisTop = d3.svg.axis().scale(this.xScale).orient("bottom");
 							this.xAxisBottom = d3.svg.axis().scale(this.xScale).orient("top");
-							/* We only want a top axis if it's the first country */
+							
+							// Only top axis
 							if(this.id == 0){
 								this.chartContainer.append("g")
 									.attr("class", "x axis top")
@@ -213,7 +209,7 @@
 									.call(this.xAxisTop);
 							}
 							
-							/* Only want a bottom axis on the last country */
+							// Bottom axis only
 							if(this.showBottomAxis){
 									this.chartContainer.append("g")
 										.attr("class", "x axis bottom")
@@ -229,8 +225,8 @@
 								.call(this.yAxis);
 																	
 							this.chartContainer.append("text")
-								.attr("class","country-title")
-								.attr("transform", "translate(15,40)")
+								.attr("class","emotion-title")
+								.attr("transform", "translate(3,37)")
 								.text(this.name);
 							
 						}
