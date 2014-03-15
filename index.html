@@ -4,15 +4,10 @@
 		<meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
 		<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-        <title>OilSpill</title>
+        <title>Oil Spill</title>
         <meta name="description" content="Multiple Area Charts with D3.js " />
-        <meta name="keywords" content="d3.js, area charts, zoom, pan, data, infographic, ajavscript, chart" />
-        <meta name="author" content="Codrops" />
-        <link rel="shortcut icon" href="../favicon.ico"> 
         <link rel="stylesheet" type="text/css" href="css/style.css" />
 		<link href='http://fonts.googleapis.com/css?family=Lato:300,700' rel='stylesheet' type='text/css' />
-		<script type="text/javascript" src="js/modernizr.custom.79639.js"></script> 
-		<!--[if lte IE 8]><style>.main{display:none;} .support-note .note-ie{display:block;}</style><![endif]-->	
 		<script src="http://d3js.org/d3.v2.js"></script>
     </head>
     <body>
@@ -20,17 +15,19 @@
 
 			<section class="main">
 				<div id="chart-container">
-					<h2>OilSpill Tweets</h2>
+					<h2>Tweet Emotion Frequency During Obama's Oval Office Address (BP Oil Spill)</h2>
 					<script type="text/javascript">
 						var margin = {top: 10, right: 40, bottom: 150, left: 60},
 								width = 940 - margin.left - margin.right,
 								height = 500 - margin.top - margin.bottom,
 								contextHeight = 50;
 								contextWidth = width * .5;
+
+
 							
 						var svg = d3.select("#chart-container").append("svg")
 												.attr("width", width + margin.left + margin.right)
-												.attr("height", (height + margin.top + margin.bottom));
+												.attr("height", (height + margin.top + margin.bottom + 20));
 												
 						d3.csv('data2.csv', createChart);
 						
@@ -115,7 +112,7 @@
 				
 							var context = svg.append("g")
 								.attr("class","context")
-								.attr("transform", "translate(" + (margin.left + width * .25) + "," + (height + margin.top + chartHeight  + 40) + ")");
+								.attr("transform", "translate(" + (margin.left + width * .25) + "," + (height + margin.top + chartHeight  + 50) + ")");
 							
 							context.append("g")
 								.attr("class", "x axis top")
@@ -131,7 +128,7 @@
 							
 							context.append("text")
 								.attr("class","instructions")
-								.attr("transform", "translate(0," + (contextHeight + 20) + ")")
+								.attr("transform", "translate(0," + (contextHeight + 15) + ")")
 								.text('Click and drag above to zoom / pan the data');
 												
 							function onBrush(){
@@ -154,8 +151,6 @@
 							this.margin = options.margin;
 							this.showBottomAxis = options.showBottomAxis;
 							
-							console.log (this.chartData);
-
 							var localName = this.name;
 							
 							/* XScale is time based */
@@ -173,9 +168,9 @@
 							// creates chart
 							this.area = d3.svg.area()
 								//.interpolate("basis")
-								.x(function(d) {console.log(d); return xS(d.Year); })
+								.x(function(d) {return xS(d.Year); })
 								.y0(this.height)
-								.y1(function(d) {console.log(d[localName]); return yS(d[localName]); });
+								.y1(function(d) {return yS(d[localName]); });
 							
 							// mask for zoom and pan
 							this.svg.append("defs").append("clipPath")
@@ -188,18 +183,17 @@
 							this.chartContainer = svg.append("g")
 								.attr('class',this.name.toLowerCase())
 								.attr("transform", "translate(" + this.margin.left + "," + (this.margin.top + (this.height * this.id) + (10 * this.id)) + ")");
-							
-							console.log("test");
-							
+														
 							// Creating the path and rendering it
 							this.chartContainer.append("path")
 								.data([this.chartData])
 								.attr("class", "chart")
 								.attr("clip-path", "url(#clip-" + this.id + ")")
-								.attr("d", this.area);
+								.attr("d", this.area)
+								.style("fill", "blue");
 															
 							this.xAxisTop = d3.svg.axis().scale(this.xScale).orient("bottom");
-							this.xAxisBottom = d3.svg.axis().scale(this.xScale).orient("top");
+							this.xAxisBottom = d3.svg.axis().scale(this.xScale).orient("bottom");
 							
 							// Only top axis
 							if(this.id == 0){
@@ -227,6 +221,7 @@
 							this.chartContainer.append("text")
 								.attr("class","emotion-title")
 								.attr("transform", "translate(3,37)")
+								.attr("fill", "#48729D")
 								.text(this.name);
 							
 						}

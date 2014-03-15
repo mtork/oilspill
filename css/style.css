@@ -22,7 +22,7 @@ svg {
 	font-family: 'Lato', Arial, serif;
 	font-size: 10px;
 	font-weight: 700;
-	text-shadow: 0 1px 1px rgba(255,255,255,0.8);
+	/*text-shadow: 0 1px 1px rgba(255,255,255,0.8);*/
 }
 
 text.country-title {
@@ -45,25 +45,11 @@ g.context g.axis line {
 	stroke-opacity: .1;
 }
 
-g.france path.chart {
+
+g.accusation path.chart {
 	fill: rgba(127,201,127,0.5);
 }
 
-g.germany path.chart {
-	fill: rgba(127,201,174,0.5);
-}
-
-g.japan path.chart {
-	fill: rgba(127,183,201,0.5);
-}
-
-g.uk path.chart {
-	fill: rgba(127,130,201,0.5);
-}
-
-g.usa path.chart {
-	fill: rgba(171,127,201,0.5);
-}
 
 .axis path, .axis line {
 	fill: none;
