@@ -161,11 +161,15 @@
 							     .attr("x2", "0%")
 							     .attr("y2", "100%");
 
-							grad.append("stop").attr("offset", "0%").attr("stop-color", "yellow");
-							grad.append("stop").attr("offset", "10%").attr("stop-color", "yellow");
-							grad.append("stop").attr("offset", "10%").attr("stop-color", "red");
-							grad.append("stop").attr("offset", "20%").attr("stop-color", "red");
-							
+							grad.append("stop").attr("offset", "0%").attr("stop-color", "rgb(227,74,51)");
+							grad.append("stop").attr("offset", "25%").attr("stop-color", "rgb(227,74,51)");
+							grad.append("stop").attr("offset", "25%").attr("stop-color", "rgb(253,187,132)");
+							grad.append("stop").attr("offset", "50%").attr("stop-color", "rgb(253,187,132)");
+							grad.append("stop").attr("offset", "50%").attr("stop-color", "rgb(254,232,200)");
+							grad.append("stop").attr("offset", "75%").attr("stop-color", "rgb(254,232,200)");
+							grad.append("stop").attr("offset", "75%").attr("stop-color", "rgb(254,240,217)");
+							grad.append("stop").attr("offset", "50%").attr("stop-color", "rgb(254,240,217)");
+			
 							/* XScale is time based */
 							this.xScale = d3.time.scale()
 								.range([0, this.width])
