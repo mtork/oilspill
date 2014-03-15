@@ -158,11 +158,12 @@
 							     .attr("id", "grad")
 							     .attr("x1", "0%")
 							     .attr("y1", "0%")
+							     .attr("x2", "0%")
 							     .attr("y2", "100%");
 
 							grad.append("stop").attr("offset", "0%").attr("stop-color", "yellow");
-							grad.append("stop").attr("offset", "50%").attr("stop-color", "yellow");
-							grad.append("stop").attr("offset", "50%").attr("stop-color", "red");
+							grad.append("stop").attr("offset", "10%").attr("stop-color", "yellow");
+							grad.append("stop").attr("offset", "10%").attr("stop-color", "red");
 							grad.append("stop").attr("offset", "20%").attr("stop-color", "red");
 							
 							/* XScale is time based */
