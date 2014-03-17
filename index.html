@@ -11,7 +11,6 @@
 		<link href='http://fonts.googleapis.com/css?family=Lato:300,700' rel='stylesheet' type='text/css' />
 		<script src="http://d3js.org/d3.v2.js"></script>
 		<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
-
     </head>
     <body>
         <div class="container">
@@ -19,11 +18,41 @@
 			<section class="main">
 				<div id="chart-container">
 					<h2>Tweet Emotion Frequency During Obama's Oval Office Address (BP Oil Spill) 
-						<button id="description" type="button" class="right btn btn-default" data-container="body" data-toggle="popover" data-placement="right" data-content="
+					<button id="description" type="button" class="right btn btn-default" data-container="body" data-toggle="popover" data-placement="right" data-content="
 						The BP Oil Spill was an ecological disaster that began on April 20, 2010 and spanned 84 days. This visualization contains tweets coded for emotion from trained classifiers. "><span class="glyphicon glyphicon-info-sign"></span></button></h2>
+
+
+					<button id="accusation_tweet_before" type="button" class="btn btn-default" data-container="body" data-toggle="popover" data-placement="left" data-content='@MicheleBachmann @GOPLeader  6061    main reason #obama lets #oilspill into the #Gulf of Mexico http://tinyurl.com/2637oa4 Read about Nalco '><span class="glyphicon glyphicon-comment"></span></button>
+
+					<button id="anger_tweet_before" type="button" class="btn btn-default" data-container="body" data-toggle="popover" data-placement="left" data-content='Sacrifice? How About 9 Holes Instead Of 18? http://bit.ly/9ohmxJ #gulf #golf'><span class="glyphicon glyphicon-comment"></span></button>
+
+					<button id="disgust_tweet_before" type="button" class="btn btn-default" data-container="body" data-toggle="popover" data-placement="left" data-content='So at least were making SOME progress on capping the #OilSpill. I think Michael would be proud. Yet disgusted b/c we couldnt do it quicker!'><span class="glyphicon glyphicon-comment"></span></button>
+
+					<button id="fear_tweet_before" type="button" class="btn btn-default" data-container="body" data-toggle="popover" data-placement="left" data-content='Great fear ~ what if ~ the new cap ~ does not ~ work #gogyohka #oilspill  -> 615'><span class="glyphicon glyphicon-comment"></span></button>
+
+					<button id="happiness_tweet_before" type="button" class="btn btn-default" data-container="body" data-toggle="popover" data-placement="left" data-content='We are very excited to announce Dr. Riki Ott will be our keynote speaker for Spill into DC rally! http://bit.ly/95ZEJA #oilspill'><span class="glyphicon glyphicon-comment"></span></button>
+
+					<button id="no_tweet_before" type="button" class="btn btn-default" data-container="body" data-toggle="popover" data-placement="left" data-content='RT @beyond_BP: Michelle Obama talks about BP oil spill. Transcript - Lynn Sweet http://bit.ly/dbDvsX #bp #oilspill'><span class="glyphicon glyphicon-comment"></span></button>
+
+					<button id="sadness_tweet_before" type="button" class="btn btn-default" data-container="body" data-toggle="popover" data-placement="left" data-content='RT @greenforall: "Someone right now might be taking their last breath in the Gulf because of air pollution" @lisapjackson #oilspill #g4a'><span class="glyphicon glyphicon-comment"></span></button>
+
+					<button id="surprise_tweet_before" type="button" class="btn btn-default" data-container="body" data-toggle="popover" data-placement="left" data-content='Gulf Oil Disaster: Planned Event To Cause Mass FEMA Evacuation? http://tinyurl.com/26ofz2l #oilspill 18:10:01'><span class="glyphicon glyphicon-comment"></span></button>
+
+
+					</div>
 
 					<script type="text/javascript">
 						$('#description').popover();
+						$('#accusation_tweet_before').popover();
+						$('#anger_tweet_before').popover();
+						$('#disgust_tweet_before').popover();
+						$('#fear_tweet_before').popover();
+						$('#happiness_tweet_before').popover();
+						$('#no_tweet_before').popover();
+						$('#sadness_tweet_before').popover();
+						$('#surprise_tweet_before').popover();
+
+
 
 						var margin = {top: 10, right: 40, bottom: 150, left: 60},
 								width = 940 - margin.left - margin.right,
@@ -76,7 +105,7 @@
 								}
 								
 								// D3 needs a date object, let's convert it just one time
-								d.Year = new Date("June 10, 2010 " + d["Time"]);
+								d.Year = new Date("June 15, 2010 " + d["Time"]);
 
 
 							});
@@ -144,6 +173,7 @@
 								var b = brush.empty() ? contextXScale.domain() : brush.extent();
 								for(var i = 0; i < countriesCount; i++){
 									charts[i].showOnly(b);
+
 								}
 							}
 						}
@@ -161,17 +191,6 @@
 							
 							var localName = this.name;
 
-
-
-							/*grad.append("stop").attr("offset", "0%").attr("stop-color", "rgb(227,26,28)");
-							grad.append("stop").attr("offset", "25%").attr("stop-color", "rgb(227,26,28");
-							grad.append("stop").attr("offset", "25%").attr("stop-color", "rgb(253,141,60)");
-							grad.append("stop").attr("offset", "50%").attr("stop-color", "rgb(253,141,60)");
-							grad.append("stop").attr("offset", "50%").attr("stop-color", "rgb(254,204,92)");
-							grad.append("stop").attr("offset", "75%").attr("stop-color", "rgb(254,204,92)");
-							grad.append("stop").attr("offset", "75%").attr("stop-color", "rgb(255,255,178)");
-							grad.append("stop").attr("offset", "100%").attr("stop-color", "rgb(255,255,178)");
-			
 							/* XScale is time based */
 							this.xScale = d3.time.scale()
 								.range([0, this.width])
@@ -237,7 +256,10 @@
 								.attr("clip-path", "url(#clip-" + this.id + ")")
 								.attr("d", this.area)
 								.style("fill", "url(#grad)");
-															
+
+							//this.chartContainer.append("div")
+							//	.id(localName + "before");
+							
 							this.xAxisTop = d3.svg.axis().scale(this.xScale).orient("bottom");
 							this.xAxisBottom = d3.svg.axis().scale(this.xScale).orient("bottom");
 							
@@ -278,7 +300,17 @@
 							this.chartContainer.select(".x.axis.top").call(this.xAxisTop);
 							this.chartContainer.select(".x.axis.bottom").call(this.xAxisBottom);
 						}
+
+						/* appends but does not show?
+						window.onload = function WindowLoad(event) {
+							var e = document.createElement('div');
+							e.innerHTML = "<p>this is a test</p>";
+
+							$(".accusation").append('<p>example</p>');
+						} */
+													
 					</script>
+
 				</div>
 				
 			</section>

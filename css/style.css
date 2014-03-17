@@ -1,6 +1,58 @@
 @import url('normalize.css');
 @import url('demo.css');
 
+#surprise_tweet_before {
+	position: absolute;
+	left: 202px;
+	top: 450px;
+}
+
+#sadness_tweet_before {
+	position: absolute;
+	left: 202px;
+	top: 400px;
+}
+
+#no_tweet_before {
+	position: absolute;
+	left: 202px;
+	top: 350px;
+}
+
+#happiness_tweet_before {
+	position: absolute;
+	left: 202px;
+	top: 300px;
+}
+
+#fear_tweet_before {
+	position: absolute;
+	left: 202px;
+	top: 250px;
+}
+
+#disgust_tweet_before {
+	position: absolute;
+	left: 202px;
+	top: 195px;
+}
+
+#accusation_tweet_before {
+	position: absolute;
+	left: 202px;
+	top: 90px;
+}
+
+#anger_tweet_before {
+	position: absolute;
+	left: 202px;
+	top: 145px;
+}
+
+.btn-default {
+	border-color: none;
+}
+
 .right {
 	float: right;
 }
