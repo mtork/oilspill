@@ -2,20 +2,29 @@
 <html lang="en">
     <head>
 		<meta charset="UTF-8" />
+		<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+		<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
 		<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
         <title>Oil Spill</title>
         <link rel="stylesheet" type="text/css" href="css/style.css" />
 		<link href='http://fonts.googleapis.com/css?family=Lato:300,700' rel='stylesheet' type='text/css' />
 		<script src="http://d3js.org/d3.v2.js"></script>
+		<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+
     </head>
     <body>
         <div class="container">
 
 			<section class="main">
 				<div id="chart-container">
-					<h2>Tweet Emotion Frequency During Obama's Oval Office Address (BP Oil Spill)</h2>
+					<h2>Tweet Emotion Frequency During Obama's Oval Office Address (BP Oil Spill) 
+						<button id="description" type="button" class="right btn btn-default" data-container="body" data-toggle="popover" data-placement="right" data-content="
+						The BP Oil Spill was an ecological disaster that began on April 20, 2010 and spanned 84 days. This visualization contains tweets coded for emotion from trained classifiers. "><span class="glyphicon glyphicon-info-sign"></span></button></h2>
+
 					<script type="text/javascript">
+						$('#description').popover();
+
 						var margin = {top: 10, right: 40, bottom: 150, left: 60},
 								width = 940 - margin.left - margin.right,
 								height = 500 - margin.top - margin.bottom,

@@ -1,9 +1,13 @@
 @import url('normalize.css');
 @import url('demo.css');
 
+.right {
+	float: right;
+}
+
 #chart-container {
 	width: 1000px; 
-	margin: 0 auto 50px auto;
+	margin: 15px auto 50px auto;
 	background: rgba(255,255,255,1);
 	box-shadow: 1px 1px 4px rgba(0,0,0,0.2);
 	padding: 20px 30px;
