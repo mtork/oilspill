@@ -152,15 +152,9 @@
 							
 							var localName = this.name;
 
-							var grad = this.svg.append("defs")
-							     .append("linearGradient")
-							     .attr("id", "grad")
-							     .attr("x1", "0%")
-							     .attr("y1", "0%")
-							     .attr("x2", "0%")
-							     .attr("y2", "100%");
 
-							grad.append("stop").attr("offset", "0%").attr("stop-color", "rgb(227,26,28)");
+
+							/*grad.append("stop").attr("offset", "0%").attr("stop-color", "rgb(227,26,28)");
 							grad.append("stop").attr("offset", "25%").attr("stop-color", "rgb(227,26,28");
 							grad.append("stop").attr("offset", "25%").attr("stop-color", "rgb(253,141,60)");
 							grad.append("stop").attr("offset", "50%").attr("stop-color", "rgb(253,141,60)");
@@ -181,6 +175,33 @@
 							var xS = this.xScale;
 							var yS = this.yScale;
 							
+							//console.log(yS(100));
+
+							var grad = this.svg.append("defs")
+							     	.append("linearGradient")
+							     	.attr("id", "grad")
+							     	//.attr("gradientUnits", "userSpaceOnUse")
+							     	.attr("x1", "0")
+							     	.attr("y1", "0")
+							     	.attr("x2", "0")
+							     	.attr("y2", "100%")
+							 
+							    .selectAll("stop")
+							    	.data([
+							    		{offset:"0%", color:"rgb(227,26,28)"},
+							    		{offset:"25%", color:"rgb(227,26,28)"},
+							    		{offset:"25%", color: "rgb(253,141,60)"},
+							    		{offset:"50%", color: "rgb(253,141,60)"},
+							    		{offset:"50%", color: "rgb(254,204,92)"},
+							    		{offset:"75%", color: "rgb(254,204,92)"},
+							    		{offset:"75%", color: "rgb(255,255,178)"},
+							    		{offset:"100%", color:"rgb(255,255,178)"}
+							    		])
+							    .enter().append("stop")
+							    	.attr("offset", function(d) { return d.offset; })
+     								.attr("stop-color", function(d) { return d.color; });
+
+
 							// creates chart
 							this.area = d3.svg.area()
 								//.interpolate("basis")
