@@ -41,21 +41,21 @@
 
 					
 					<!--example tweets after speech -->
-					<button id="accusation_tweet_after" type="button" class="btn btn-default" data-container="body" data-toggle="popover" data-placement="left" data-content='RT @SergeantBilko: Is Obama deliberately bankrupting the Gulf Coast to push his energy agenda?http://bit.ly/ayo1qQ  #tcot  #oilspill'><span class="glyphicon glyphicon-comment"></span></button>
+					<button id="accusation_tweet_after" type="button" class="btn btn-default" data-container="body" data-toggle="popover" data-placement="right" data-content='RT @SergeantBilko: Is Obama deliberately bankrupting the Gulf Coast to push his energy agenda?http://bit.ly/ayo1qQ  #tcot  #oilspill'><span class="glyphicon glyphicon-comment"></span></button>
 
-					<button id="anger_tweet_after" type="button" class="btn btn-default" data-container="body" data-toggle="popover" data-placement="left" data-content='It wasnt supposed to be like this. Sell your car. Move to the city. Stop guzzling oil. WAKE UP http://nyti.ms/aQGTsg #bp #oilspill'><span class="glyphicon glyphicon-comment"></span></button>
+					<button id="anger_tweet_after" type="button" class="btn btn-default" data-container="body" data-toggle="popover" data-placement="right" data-content='It wasnt supposed to be like this. Sell your car. Move to the city. Stop guzzling oil. WAKE UP http://nyti.ms/aQGTsg #bp #oilspill'><span class="glyphicon glyphicon-comment"></span></button>
 
-					<button id="disgust_tweet_after" type="button" class="btn btn-default" data-container="body" data-toggle="popover" data-placement="left" data-content='RT @Sami_Shamieh: What a joke: CNN discussing the #oilspill fix has absolutely no idea what theyre talking about #p2 #tcot'><span class="glyphicon glyphicon-comment"></span></button>
+					<button id="disgust_tweet_after" type="button" class="btn btn-default" data-container="body" data-toggle="popover" data-placement="right" data-content='RT @Sami_Shamieh: What a joke: CNN discussing the #oilspill fix has absolutely no idea what theyre talking about #p2 #tcot'><span class="glyphicon glyphicon-comment"></span></button>
 
-					<button id="fear_tweet_after" type="button" class="btn btn-default" data-container="body" data-toggle="popover" data-placement="left" data-content='86 days and counting..... #oilspill'><span class="glyphicon glyphicon-comment"></span></button>
+					<button id="fear_tweet_after" type="button" class="btn btn-default" data-container="body" data-toggle="popover" data-placement="right" data-content='86 days and counting..... #oilspill'><span class="glyphicon glyphicon-comment"></span></button>
 
-					<button id="happiness_tweet_after" type="button" class="btn btn-default" data-container="body" data-toggle="popover" data-placement="left" data-content='RT @AllWaysRentals: Finally! RT @TravelingAnna: #BP says oil has stopped gushing in the Gulf http://bit.ly/aECYe8 (via  @BN9 ) #oilspill ...'><span class="glyphicon glyphicon-comment"></span></button>
+					<button id="happiness_tweet_after" type="button" class="btn btn-default" data-container="body" data-toggle="popover" data-placement="right" data-content='RT @AllWaysRentals: Finally! RT @TravelingAnna: #BP says oil has stopped gushing in the Gulf http://bit.ly/aECYe8 (via  @BN9 ) #oilspill ...'><span class="glyphicon glyphicon-comment"></span></button>
 
-					<button id="no_tweet_after" type="button" class="btn btn-default" data-container="body" data-toggle="popover" data-placement="left" data-content='#oilspill #bp Obama Gets Update On Oil Spill Response As Cap Testing Begins - Newsroom America http://url4.eu/5pTUv'><span class="glyphicon glyphicon-comment"></span></button>
+					<button id="no_tweet_after" type="button" class="btn btn-default" data-container="body" data-toggle="popover" data-placement="right" data-content='#oilspill #bp Obama Gets Update On Oil Spill Response As Cap Testing Begins - Newsroom America http://url4.eu/5pTUv'><span class="glyphicon glyphicon-comment"></span></button>
 
-					<button id="sadness_tweet_after" type="button" class="btn btn-default" data-container="body" data-toggle="popover" data-placement="left" data-content='Heart Breaking Investigation in2 #BP #OilSpill onABC http://bit.ly/b4eT7O #Ecocide #Enviro #youtube @UN @call4news @HeyJude408 @tzmedia'><span class="glyphicon glyphicon-comment"></span></button>
+					<button id="sadness_tweet_after" type="button" class="btn btn-default" data-container="body" data-toggle="popover" data-placement="right" data-content='Heart Breaking Investigation in2 #BP #OilSpill onABC http://bit.ly/b4eT7O #Ecocide #Enviro #youtube @UN @call4news @HeyJude408 @tzmedia'><span class="glyphicon glyphicon-comment"></span></button>
 
-					<button id="surprise_tweet_after" type="button" class="btn btn-default" data-container="body" data-toggle="popover" data-placement="left" data-content='Unbelievable! RT @BPGlobalPR: Restaurants across country celebrating day 86 of #oilspill by declaring an 86 on seafood. Thats good right?'><span class="glyphicon glyphicon-comment"></span></button>
+					<button id="surprise_tweet_after" type="button" class="btn btn-default" data-container="body" data-toggle="popover" data-placement="right" data-content='Unbelievable! RT @BPGlobalPR: Restaurants across country celebrating day 86 of #oilspill by declaring an 86 on seafood. Thats good right?'><span class="glyphicon glyphicon-comment"></span></button>
 
 				</div>
 
@@ -310,7 +310,7 @@
 								this.chartContainer.append("text")
 									.attr("id", "speech-marker")
 									.attr("transform", "translate(425, 53)")
-									.attr("fill", "black")
+									.attr("fill", "#663D00")
 									.text("speech")
 
 							}
@@ -346,7 +346,7 @@
 																	
 							this.chartContainer.append("text")
 								.attr("class","emotion-title")
-								.attr("transform", "translate(3,39)")
+								.attr("transform", "translate(3,50)")
 								.attr("fill", "black")
 								.text(this.name);
 							
@@ -368,11 +368,9 @@
 						} */
 													
 					</script>
-
 				</div>
-				
-			</section>
-			
+
+			</section>		
         </div>
     </body>
 </html>
