@@ -38,8 +38,13 @@
 
 					<button id="surprise_tweet_before" type="button" class="btn btn-default" data-container="body" data-toggle="popover" data-placement="left" data-content='Gulf Oil Disaster: Planned Event To Cause Mass FEMA Evacuation? http://tinyurl.com/26ofz2l #oilspill 18:10:01'><span class="glyphicon glyphicon-comment"></span></button>
 
+					
+					<!--
+					<svg width="850" height="55">
+					  <rect width="841" height="43" style="fill:rgb(0,0,255);stroke-width:0;stroke:rgb(0,0,0)" />
+					</svg> -->
 
-					</div>
+				</div>
 
 					<script type="text/javascript">
 						$('#description').popover();
@@ -65,7 +70,8 @@
 						var svg = d3.select("#chart-container").append("svg")
 												.attr("width", width + margin.left + margin.right)
 												.attr("height", (height + margin.top + margin.bottom + 20));
-												
+
+
 						d3.csv('data2.csv', createChart);
 						
 						function createChart(data){
@@ -150,7 +156,8 @@
 							var context = svg.append("g")
 								.attr("class","context")
 								.attr("transform", "translate(" + (margin.left + width * .25) + "," + (height + margin.top + chartHeight  + 50) + ")");
-							
+
+						
 							context.append("g")
 								.attr("class", "x axis top")
 								.attr("transform", "translate(0,0)")
@@ -176,6 +183,7 @@
 
 								}
 							}
+
 						}
 						
 						function Chart(options){
@@ -205,29 +213,6 @@
 							
 							//console.log(yS(100));
 
-							var grad = this.svg.append("defs")
-							     	.append("linearGradient")
-							     	.attr("id", "grad")
-							     	//.attr("gradientUnits", "userSpaceOnUse")
-							     	.attr("x1", "0")
-							     	.attr("y1", "0")
-							     	.attr("x2", "0")
-							     	.attr("y2", "100%")
-							 
-							    .selectAll("stop")
-							    	.data([
-							    		{offset:"0%", color:"rgb(227,26,28)"},
-							    		{offset:"25%", color:"rgb(227,26,28)"},
-							    		{offset:"25%", color: "rgb(253,141,60)"},
-							    		{offset:"50%", color: "rgb(253,141,60)"},
-							    		{offset:"50%", color: "rgb(254,204,92)"},
-							    		{offset:"75%", color: "rgb(254,204,92)"},
-							    		{offset:"75%", color: "rgb(255,255,178)"},
-							    		{offset:"100%", color:"rgb(255,255,178)"}
-							    		])
-							    .enter().append("stop")
-							    	.attr("offset", function(d) { return d.offset; })
-     								.attr("stop-color", function(d) { return d.color; });
 
 
 							// creates chart
@@ -248,14 +233,51 @@
 							this.chartContainer = svg.append("g")
 								.attr('class',this.name.toLowerCase())
 								.attr("transform", "translate(" + this.margin.left + "," + (this.margin.top + (this.height * this.id) + (10 * this.id)) + ")");
-														
+											
+
+                            var grad = this.chartContainer.append("defs")
+							     	.append("linearGradient")
+							     	.attr("id", "grad")
+							     	//.attr("gradientUnits", "userSpaceOnUse")
+							     	.attr("x1", "0")
+							     	.attr("y1", "0")
+							     	.attr("x2", "0")
+							     	.attr("y2", "100%")
+
+							 
+							    .selectAll("stop")
+							    	.data([
+							    		{offset:"0%", color:"rgb(227,26,28)"},
+							    		{offset:"25%", color:"rgb(227,26,28)"},
+							    		{offset:"25%", color: "rgb(253,141,60)"},
+							    		{offset:"50%", color: "rgb(253,141,60)"},
+							    		{offset:"50%", color: "rgb(254,204,92)"},
+							    		{offset:"75%", color: "rgb(254,204,92)"},
+							    		{offset:"75%", color: "rgb(255,255,178)"},
+							    		{offset:"100%", color:"rgb(255,255,178)"}
+							    		])
+							    .enter().append("stop")
+							    	.attr("offset", function(d) { return d.offset; })
+     								.attr("stop-color", function(d) { return d.color; });
+
+
+     						var rectangle = this.chartContainer.append("rect")
+                            .attr("id","rect-grad")
+                            .attr("x", 0)
+                            .attr("y", 0)
+                            .attr("width", 841)
+                            .attr("height", 43)
+                            .style("fill", "url(#grad)");
+
+
+
 							// Creating the path and rendering it
 							this.chartContainer.append("path")
 								.data([this.chartData])
 								.attr("class", "chart")
-								.attr("clip-path", "url(#clip-" + this.id + ")")
-								.attr("d", this.area)
-								.style("fill", "url(#grad)");
+								.attr("clip-path", "url(#rect-grad)")
+								.attr("d", this.area);
+								//.style("fill", "url(#grad)");
 
 							//this.chartContainer.append("div")
 							//	.id(localName + "before");
