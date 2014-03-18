@@ -263,20 +263,45 @@
 
      						this.chartContainer.append("defs")
 	                            .append("clipPath")
-		                            .attr("id","path-clipper")
+		                            .attr("id","path-clipper-" + this.id)
 		                        .append("path")							
 									.data([this.chartData])
 									.attr("class", "chart")
 									.attr("d", this.area);
 								//.style("fill", "url(#grad)");
 
+							var grad = this.chartContainer.append("defs")
+							     	.append("linearGradient")
+							     	.attr("id", "grad")
+							     	.attr("x1", "0")
+							     	.attr("y1", "0")
+							     	.attr("x2", "0")
+							     	.attr("y2", "100%")
+
+							 
+							    .selectAll("stop")
+							    	.data([
+							    		{offset:"0%", color:"rgb(227,26,28)"},
+							    		{offset:"25%", color:"rgb(227,26,28)"},
+							    		{offset:"25%", color: "rgb(253,141,60)"},
+							    		{offset:"50%", color: "rgb(253,141,60)"},
+							    		{offset:"50%", color: "rgb(254,204,92)"},
+							    		{offset:"75%", color: "rgb(254,204,92)"},
+							    		{offset:"75%", color: "rgb(255,255,178)"},
+							    		{offset:"100%", color:"rgb(255,255,178)"}
+							    		])
+							    .enter().append("stop")
+							    	.attr("offset", function(d) { return d.offset; })
+     								.attr("stop-color", function(d) { return d.color; });
+
+
 							var rectangle = this.chartContainer.append("rect")
-								.attr("clip-path", "url(#path-clipper)")
+								.attr("clip-path", "url(#path-clipper-" + this.id + ")")
 								.attr("x", 0)
 		                        .attr("y", 0)
 		                        .attr("width", 841)
 		                        .attr("height", 43)
-		                        .style("fill", "blue");
+		                        .style("fill", "url(#grad)");
 
 							this.xAxisTop = d3.svg.axis().scale(this.xScale).orient("bottom");
 							this.xAxisBottom = d3.svg.axis().scale(this.xScale).orient("bottom");
