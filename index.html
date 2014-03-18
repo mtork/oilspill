@@ -286,6 +286,12 @@
 									.attr("class", "x axis top")
 									.attr("transform", "translate(0,0)")
 									.call(this.xAxisTop);
+								this.chartContainer.append("text")
+									.attr("id", "speech-marker")
+									.attr("transform", "translate(425, 53)")
+									.attr("fill", "black")
+									.text("speech")
+
 							}
 							
 							// Bottom axis only
@@ -302,6 +308,20 @@
 								.attr("class", "y axis")
 								.attr("transform", "translate(-15,0)")
 								.call(this.yAxis);
+
+							this.chartContainer.append("line")
+								.attr("x1", "412")
+								.attr("y1", "30")
+								.attr("x2", "412")
+								.attr("y2", "43")
+								.style("stroke", "#FF9900");
+
+							this.chartContainer.append("line")
+								.attr("x1", "470")
+								.attr("y1", "30")
+								.attr("x2", "470")
+								.attr("y2", "43")
+								.style("stroke", "#FF9900");
 																	
 							this.chartContainer.append("text")
 								.attr("class","emotion-title")
