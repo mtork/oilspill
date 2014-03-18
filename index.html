@@ -307,11 +307,20 @@
 									.attr("class", "x axis top")
 									.attr("transform", "translate(0,0)")
 									.call(this.xAxisTop);
+
 								this.chartContainer.append("text")
 									.attr("id", "speech-marker")
 									.attr("transform", "translate(425, 53)")
 									.attr("fill", "#663D00")
-									.text("speech")
+									.text("speech");
+
+							/*
+								this.chartContainer.append("text")
+									.attr("id", "y-axis")
+									.attr("transform", "translate(-10,200)")
+									.attr("transform", "rotate(275)")
+									.attr("fill", "gray")
+									.text("tweet count");*/
 
 							}
 							
@@ -332,21 +341,21 @@
 
 							this.chartContainer.append("line")
 								.attr("x1", "412")
-								.attr("y1", "30")
+								.attr("y1", "25")
 								.attr("x2", "412")
 								.attr("y2", "43")
 								.style("stroke", "#FF9900");
 
 							this.chartContainer.append("line")
 								.attr("x1", "470")
-								.attr("y1", "30")
+								.attr("y1", "25")
 								.attr("x2", "470")
 								.attr("y2", "43")
 								.style("stroke", "#FF9900");
 																	
 							this.chartContainer.append("text")
 								.attr("class","emotion-title")
-								.attr("transform", "translate(3,50)")
+								.attr("transform", "translate(3,40)")
 								.attr("fill", "black")
 								.text(this.name);
 							
