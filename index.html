@@ -261,26 +261,23 @@
      								.attr("stop-color", function(d) { return d.color; });*/
 
 
-     						var rectangle = this.chartContainer.append("defs")
-	                            .append("clip-path")
-	                            .attr("id","rect-grad")
-	                            .attr("x", 0)
-	                            .attr("y", 0)
-	                            .attr("width", 841)
-	                            .attr("height", 43)
-	                            .style("fill", "blue");
-
-
-							// Creating the path and rendering it
-							this.chartContainer.append("path")
-								
-								.data([this.chartData])
-								.attr("class", "chart")
-								.attr("clip-path", "url(#rect-grad)")
-								.attr("d", this.area);
+     						this.chartContainer.append("defs")
+	                            .append("clipPath")
+		                            .attr("id","path-clipper")
+		                        .append("path")							
+									.data([this.chartData])
+									.attr("class", "chart")
+									.attr("d", this.area);
 								//.style("fill", "url(#grad)");
 
-							
+							var rectangle = this.chartContainer.append("rect")
+								.attr("clip-path", "url(#path-clipper)")
+								.attr("x", 0)
+		                        .attr("y", 0)
+		                        .attr("width", 841)
+		                        .attr("height", 43)
+		                        .style("fill", "blue");
+
 							this.xAxisTop = d3.svg.axis().scale(this.xScale).orient("bottom");
 							this.xAxisBottom = d3.svg.axis().scale(this.xScale).orient("bottom");
 							

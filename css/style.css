@@ -1,6 +1,10 @@
 @import url('normalize.css');
 @import url('demo.css');
 
+g.accusation path.chart {
+ clip-path: url(#rect-grad) ;
+}
+
 #surprise_tweet_before {
 	position: absolute;
 	left: 202px;
