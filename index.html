@@ -234,32 +234,6 @@
 							this.chartContainer = svg.append("g")
 								.attr('class',this.name.toLowerCase())
 								.attr("transform", "translate(" + this.margin.left + "," + (this.margin.top + (this.height * this.id) + (10 * this.id)) + ")");
-											
-							/*var grad = this.chartContainer.append("defs")
-							     	.append("linearGradient")
-							     	.attr("id", "grad")
-							     	//.attr("gradientUnits", "userSpaceOnUse")
-							     	.attr("x1", "0")
-							     	.attr("y1", "0")
-							     	.attr("x2", "0")
-							     	.attr("y2", "100%")
-
-							 
-							    .selectAll("stop")
-							    	.data([
-							    		{offset:"0%", color:"rgb(227,26,28)"},
-							    		{offset:"25%", color:"rgb(227,26,28)"},
-							    		{offset:"25%", color: "rgb(253,141,60)"},
-							    		{offset:"50%", color: "rgb(253,141,60)"},
-							    		{offset:"50%", color: "rgb(254,204,92)"},
-							    		{offset:"75%", color: "rgb(254,204,92)"},
-							    		{offset:"75%", color: "rgb(255,255,178)"},
-							    		{offset:"100%", color:"rgb(255,255,178)"}
-							    		])
-							    .enter().append("stop")
-							    	.attr("offset", function(d) { return d.offset; })
-     								.attr("stop-color", function(d) { return d.color; });*/
-
 
      						this.chartContainer.append("defs")
 	                            .append("clipPath")
@@ -281,14 +255,14 @@
 							 
 							    .selectAll("stop")
 							    	.data([
-							    		{offset:"0%", color:"rgb(227,26,28)"},
-							    		{offset:"25%", color:"rgb(227,26,28)"},
-							    		{offset:"25%", color: "rgb(253,141,60)"},
-							    		{offset:"50%", color: "rgb(253,141,60)"},
-							    		{offset:"50%", color: "rgb(254,204,92)"},
-							    		{offset:"75%", color: "rgb(254,204,92)"},
-							    		{offset:"75%", color: "rgb(255,255,178)"},
-							    		{offset:"100%", color:"rgb(255,255,178)"}
+							    		{offset:"0%", color:"rgb(129,15,124)"},
+							    		{offset:"25%", color:"rgb(129,15,124)"},
+							    		{offset:"25%", color: "rgb(136,86,167)"},
+							    		{offset:"50%", color: "rgb(136,86,167)"},
+							    		{offset:"50%", color: "rgb(140,150,198)"},
+							    		{offset:"75%", color: "rgb(140,150,198)"},
+							    		{offset:"75%", color: "rgb(179,205,227)"},
+							    		{offset:"100%", color:"rgb(179,205,227)"}
 							    		])
 							    .enter().append("stop")
 							    	.attr("offset", function(d) { return d.offset; })
@@ -331,8 +305,8 @@
 																	
 							this.chartContainer.append("text")
 								.attr("class","emotion-title")
-								.attr("transform", "translate(3,37)")
-								.attr("fill", "#48729D")
+								.attr("transform", "translate(3,39)")
+								.attr("fill", "black")
 								.text(this.name);
 							
 						}
