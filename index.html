@@ -17,6 +17,7 @@
 
 			<section class="main">
 				<div id="chart-container">
+
 					<h2>Tweet Emotion Frequency During Obama's Oval Office Address (BP Oil Spill) 
 					<button id="description" type="button" class="right btn btn-default" data-container="body" data-toggle="popover" data-placement="right" data-content="
 						The BP Oil Spill was an ecological disaster that began on April 20, 2010 and spanned 84 days. This visualization contains tweets coded for emotion from trained classifiers. "><span class="glyphicon glyphicon-info-sign"></span></button></h2>
@@ -234,8 +235,7 @@
 								.attr('class',this.name.toLowerCase())
 								.attr("transform", "translate(" + this.margin.left + "," + (this.margin.top + (this.height * this.id) + (10 * this.id)) + ")");
 											
-
-                            var grad = this.chartContainer.append("defs")
+							/*var grad = this.chartContainer.append("defs")
 							     	.append("linearGradient")
 							     	.attr("id", "grad")
 							     	//.attr("gradientUnits", "userSpaceOnUse")
@@ -258,29 +258,27 @@
 							    		])
 							    .enter().append("stop")
 							    	.attr("offset", function(d) { return d.offset; })
-     								.attr("stop-color", function(d) { return d.color; });
+     								.attr("stop-color", function(d) { return d.color; });*/
 
 
-     						var rectangle = this.chartContainer.append("rect")
-                            .attr("id","rect-grad")
-                            .attr("x", 0)
-                            .attr("y", 0)
-                            .attr("width", 841)
-                            .attr("height", 43)
-                            .style("fill", "url(#grad)");
-
+     						var rectangle = this.chartContainer.append("defs")
+	                            .attr("id","rect-grad")
+	                            .attr("x", 0)
+	                            .attr("y", 0)
+	                            .attr("width", 841)
+	                            .attr("height", 43)
+	                            .style("fill", "blue");
 
 
 							// Creating the path and rendering it
 							this.chartContainer.append("path")
+								
 								.data([this.chartData])
 								.attr("class", "chart")
 								.attr("clip-path", "url(#rect-grad)")
 								.attr("d", this.area);
 								//.style("fill", "url(#grad)");
 
-							//this.chartContainer.append("div")
-							//	.id(localName + "before");
 							
 							this.xAxisTop = d3.svg.axis().scale(this.xScale).orient("bottom");
 							this.xAxisBottom = d3.svg.axis().scale(this.xScale).orient("bottom");

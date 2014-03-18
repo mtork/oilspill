@@ -101,12 +101,6 @@ g.context g.axis line {
 	stroke-opacity: .1;
 }
 
-
-g.accusation path.chart {
-	fill: rgba(127,201,127,0.5);
-}
-
-
 .axis path, .axis line {
 	fill: none;
 	stroke: #aaa;
